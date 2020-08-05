@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>{{ article.title }}</h3>
+<img src="/static/image/{{ article.pic }}">
+<hr>
+<p>{{ article.user.name }}--{{ article.pubtime|date:'Y-m-d' }}</p>
+<div>{{ article.content|safe }}</div>
+</body>
+</html>

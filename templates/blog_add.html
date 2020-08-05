@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/tiny_mce/tiny_mce.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            width : 800,
+            theme : 'advanced'
+        })
+    </script>
+
+</head>
+<body>
+<form action="/blog_add/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>标题</td>
+            <td>
+                <input name="title" type="text">
+            </td>
+        </tr>
+        <tr>
+            <td>内容</td>
+            <td>
+                <textarea name="content"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>图片</td>
+            <td>
+                <input name="pic" type="file">
+            </td>
+        </tr>
+        <tr>
+            <td>所属类型</td>
+            <td>
+                <select name="type_id" multiple>
+                    {% for type in type_list %}
+                        <option value="{{ type.id }}">{{ type.name }}</option>
+                    {% endfor %}
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input name="提交" type="submit">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
